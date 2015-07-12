@@ -7,6 +7,10 @@ TYPO3 CMS in 4 separate containers (microservice-like):
 - **db**: runs MySQL database v5.5
 - **typo3**: data-only volume container with TYPO3 distribution
 
+### Install
+
+Install in a directory named "typo3cms" (so rename this one).
+
 ### Reuse of generated content and config on Linux
 
 After the first installation, it is useful to have the generated configuration and content back in place. To do this, run these commands to copy the contents from within the (running!) container to the local filesystem:
