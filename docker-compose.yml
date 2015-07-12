@@ -1,0 +1,42 @@
+typo3:
+  build: ./typo3
+
+php:
+  build: ./php
+  links:
+    - db:db
+  ports:
+    - "9000:9000"
+  volumes:
+    - ./conf/php.ini:/usr/local/etc/php/php.ini
+  volumes_from:
+    - typo3
+
+web:
+  build: ./web
+  links:
+    - db:db
+    - php:php-fpm
+  ports:
+    - "80:80"
+  volumes:
+    - ./conf/nginx-default.conf:/etc/nginx/conf.d/default.conf
+    # Only useful to enable after first install !!
+    #- ./typo3conf:/var/www/html/typo3/typo3conf/
+    #- ./fileadmin:/var/www/html/typo3/fileadmin/
+  volumes_from:
+    - typo3
+
+db:
+  image: mysql:5.5
+  ports:
+    - "3306:3306"
+  environment:
+    - MYSQL_ROOT_PASSWORD=p4ssw0rd
+    - MYSQL_DATABASE=typo3
+    - MYSQL_USER=typo3
+    - MYSQL_PASSWORD=p4ssw0rd
+  volumes:
+    - ./conf/mysql-docker.cnf:/etc/mysql/conf.d/z99-docker.cnf
+    # This does not work on boot2docker (yet) ...
+    #- ./mysql:/var/lib/mysql

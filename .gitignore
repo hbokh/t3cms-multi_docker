@@ -1,0 +1,5 @@
+varnish.yml
+varnish/
+typo3conf/
+fileadmin/
+mysql/
