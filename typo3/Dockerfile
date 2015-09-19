@@ -1,7 +1,7 @@
 FROM debian
 
 # Set this to the latest TYPO3 CMS version:
-ENV TYPO3_VERSION 6.2.14
+ENV TYPO3_VERSION 6.2.15
 
 RUN apt-get update -qq && \
     apt-get install -qqy wget && \
