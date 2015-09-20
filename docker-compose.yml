@@ -22,8 +22,8 @@ web:
   volumes:
     - ./conf/nginx-default.conf:/etc/nginx/conf.d/default.conf
     # Only useful to enable after first install !!
-    - ./typo3conf:/var/www/html/typo3/typo3conf/
-    - ./fileadmin:/var/www/html/typo3/fileadmin/
+    #- ./typo3conf:/var/www/html/typo3/typo3conf/
+    #- ./fileadmin:/var/www/html/typo3/fileadmin/
   volumes_from:
     - typo3
 
